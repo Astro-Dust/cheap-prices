@@ -17,6 +17,8 @@ def extract_prices(url):
 	print(f'\x1b[6;30;42m [-- PRODUTOS DA SAMSUNG EM PROMOÇÃO --] \x1b[0m \n')
 
 	for device, price in zip(devices, prices):
+		price_converted = float(price.text.replace('.', '').replace(',', '.')) # um pra tirar o ponto . e outro pra substituir o , por . pra transformar em float
+		device_text = device.get_text().lower()
 
 		if 'samsung' in device_text and price_converted <= 1000:
 			print(f'{device_text.title()} --- R${price_converted}')
